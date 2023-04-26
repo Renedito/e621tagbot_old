@@ -1,9 +1,3 @@
-This is a version of [Cheap Bots, Done Quick!](http://cheapbotsdonequick.com/) that runs as a single bot.
+This is the repository page for the [e621 tag bot](https://twitter.com/e621tagot). Here you'll find the tags which the bot tweets and some code.
 
-Basic instructions for usage:
-- clone this repo to a Linux server
-- get it set up as a Node app (install Node, if needed, then run `npm install`)
-- create a Twitter app on the developer site, register a Twitter account, do that OAuth dance (maybe using [http://v21.io/iwilldancetheoauthdanceforyou/](http://v21.io/iwilldancetheoauthdanceforyou/) ?)
-- put the values you get from that into a file called `.env` (as in `.env_EXAMPLE`)
-- add your Tracery code into the `rawGrammar` variable within `bot.js`
-- call `run_bot.sh` whenever you want the bot to tweet (ie via `cron`)
+I'd like to thank [Kate Compton](galaxykate.com) for making the [Cheap Bots, Done Quick!](http://cheapbotsdonequick.com/) code available to be run localy, without it, the bot would be done.
