@@ -10,7 +10,7 @@ const client = new TwitterApi({
 	accessSecret: 		process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
 
-const twitterClient = client.readWrite;
+ const twitterClient= client.readWrite;
 
 //Tracery stuff
 var rawGrammar = 
@@ -2090,8 +2090,6 @@ const cronTweet = new CronJob("35 */3 * * *", async () => {
 		console.log(e)
 		}
 	}
-
-
 		tweet();
 	});
 	

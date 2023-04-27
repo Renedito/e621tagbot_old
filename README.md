@@ -1,4 +1,4 @@
-#[e621tagbot](https://twitter.com/e621tagbot)
+# [e621tagbot](https://twitter.com/e621tagbot)
 
 This is the repository page for the [e621 tag bot](https://twitter.com/e621tagbot) on Twitter. Here you'll find the tags which the bot tweets and some code.
 
