@@ -1,6 +1,7 @@
 var tracery = require('tracery-grammar');
 require('dotenv').config({path: __dirname + '/.env'});
 const { TwitterApi } = require("twitter-api-v2");
+const CronJob = require("cron").CronJob;
 
 const client = new TwitterApi({
 	appKey:				process.env.TWITTER_CONSUMER_KEY,
@@ -10,7 +11,6 @@ const client = new TwitterApi({
   });
 
 const twitterClient = client.readWrite;
-
 
 //Tracery stuff
 var rawGrammar = 
@@ -2079,19 +2079,24 @@ var processedGrammar = tracery.createGrammar(rawGrammar);
 processedGrammar.addModifiers(tracery.baseEngModifiers); 
 
 
+const cronTweet = new CronJob("35 */3 * * *", async () => {
 
-var tweetFinal = processedGrammar.flatten("#origin#");
-console.log(tweetFinal);
+	var tweetFinal = processedGrammar.flatten("#origin#");
 
-const tweet = async () => {
-	try {
-	  await twitterClient.v2.tweet(tweetFinal);
-	} catch (e) {
-	  console.log(e)
+	const tweet = async () => {
+		try {
+		await twitterClient.v2.tweet(tweetFinal);
+		} catch (e) {
+		console.log(e)
+		}
 	}
-  }
 
-tweet();
+
+		tweet();
+	});
+	
+	cronTweet.start();
+  
 
 
 //T.post('statuses/update', { status: tweet }, function(err, data, response) {

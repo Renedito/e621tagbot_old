@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/96583502-56f5-445f-b277-986cca5a0c70/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/twittertagbot",
+    "appService.deploySubpath": "."
+}
