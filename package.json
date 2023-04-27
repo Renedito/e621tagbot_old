@@ -8,9 +8,9 @@
   },
   "author": "v21",
   "license": "ISC",
-  "dependencies":
-  {
-  	"twit" : "1.x",
-  	 "tracery-grammar": "2.x"
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "tracery-grammar": "^2.7.4",
+    "twitter-api-v2": "^1.14.2"
   }
 }

@@ -1,5 +1,18 @@
 var tracery = require('tracery-grammar');
+require('dotenv').config({path: __dirname + '/.env'});
+const { TwitterApi } = require("twitter-api-v2");
 
+const client = new TwitterApi({
+	appKey:				process.env.TWITTER_CONSUMER_KEY,
+	appSecret: 			process.env.TWITTER_CONSUMER_SECRET,
+	accessToken: 		process.env.TWITTER_ACCESS_TOKEN,
+	accessSecret: 		process.env.TWITTER_ACCESS_TOKEN_SECRET
+  });
+
+const twitterClient = client.readWrite;
+
+
+//Tracery stuff
 var rawGrammar = 
 {
 	"origin": ["#tags#"],
@@ -2057,7 +2070,7 @@ var rawGrammar =
 		"lamia",
 		"colored_sketch",
 		"small_penis"
-],
+	],
 	"filler" : ["filler"]
 }
 
@@ -2065,21 +2078,22 @@ var processedGrammar = tracery.createGrammar(rawGrammar);
 
 processedGrammar.addModifiers(tracery.baseEngModifiers); 
 
-var tweet = processedGrammar.flatten("#origin#");
-//console.log(tweet);
-
-var Twit = require('twit');
-
-var T = new Twit(
-{
-    consumer_key:         process.env.TWITTER_CONSUMER_KEY
-  , consumer_secret:      process.env.TWITTER_CONSUMER_SECRET
-  , access_token:         process.env.TWITTER_ACCESS_TOKEN
-  , access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET
-}
-);
 
 
-T.post('statuses/update', { status: tweet }, function(err, data, response) {
+var tweetFinal = processedGrammar.flatten("#origin#");
+console.log(tweetFinal);
+
+const tweet = async () => {
+	try {
+	  await twitterClient.v2.tweet(tweetFinal);
+	} catch (e) {
+	  console.log(e)
+	}
+  }
+
+tweet();
+
+
+//T.post('statuses/update', { status: tweet }, function(err, data, response) {
   //console.log(data)
-})
+//})
