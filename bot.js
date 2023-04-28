@@ -2086,22 +2086,21 @@ var processedGrammar = tracery.createGrammar(rawGrammar);
 processedGrammar.addModifiers(tracery.baseEngModifiers); 
 
 
-const cronTweet = new CronJob("35 */3 * * *", async () => {
-
-	var tweetFinal = processedGrammar.flatten("#origin#");
-	console.log(tweetFinal);
-	const tweet = async () => {
-		try {
-		await twitterClient.v2.tweet(tweetFinal);
-		} catch (e) {
-		console.log(e)
+//	#	const cronTweet = new CronJob("35 */3 * * *", async () => {
+	app.get("/", (req,res) => {
+		var tweetFinal = processedGrammar.flatten("#origin#");
+		res.send(tweetFinal);
+		const tweet = async () => {
+			try {
+			await twitterClient.v2.tweet(tweetFinal);
+			} catch (e) {
+			console.log(e)
+			}
 		}
-	}
-		tweet();
-	});
+		tweet();	
+	})
 	
-	cronTweet.start();
 
-//T.post('statuses/update', { status: tweet }, function(err, data, response) {
-  //console.log(data)
-//})
+//	Uncomment the # to be run locallyCron Implementation to be run locally
+//	#	});
+//	#	cronTweet.start();
