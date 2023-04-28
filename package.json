@@ -1,12 +1,12 @@
 {
-  "name": "tracerybot",
-  "version": "0.0.0",
-  "description": "twitterbot generating from tracery",
+  "name": "e621tagbot",
+  "version": "0.0.1",
+  "description": "the e621tagbot twtiter bot tweeting tags every 3 hours",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "v21",
+  "author": "Renedito",
   "license": "ISC",
   "dependencies": {
     "cron": "^2.3.0",
