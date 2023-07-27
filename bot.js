@@ -2087,7 +2087,7 @@ processedGrammar.addModifiers(tracery.baseEngModifiers);
 
 
 //	#	const cronTweet = new CronJob("35 */3 * * *", async () => {
-	app.post("/", (req,res) => {
+	app.get("/", (req,res) => {
 		var tweetFinal = processedGrammar.flatten("#origin#");
 		
 		const tweet = async () => {
